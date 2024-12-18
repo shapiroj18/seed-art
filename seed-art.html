@@ -20,7 +20,7 @@
 		font-size: xxx-large;
 	}
 
-	div {
+	div#canvas {
 		height: 500px;
 		width: 100%;
 		border-style: solid;
@@ -34,6 +34,10 @@
 		height: 30px;
 	}
 
+	input:hover {
+		background-color: black;
+	}
+
 	footer {
 		flex-direction: column;
 		justify-content: right;
@@ -43,22 +47,23 @@
 	ul {
 		list-style-type: none;
 	}
+
     </style>
   </head>
   <body>
 	<h1>Seed Art Builder</h1>
-	<p>Add your seeds:
-		<input type="image" src="img/white-quinoa.png" onclick="addSeed('img/white-quinoa.png')"/>
-		<input type="image" src="img/navy-bean.png" onclick="addSeed('img/navy-bean.png')"/>
-		<input type="image" src="img/barley.png" onclick="addSeed('img/barley.png')"/>
-		<input type="image" src="img/millet.png" onclick="addSeed('img/millet.png')"/>
-		<input type="image" src="img/corn.png" onclick="addSeed('img/corn.png')"/>
-		<input type="image" src="img/lentil.png" onclick="addSeed('img/lentil.png')"/>
-		<input type="image" src="img/red-quinoa.png" onclick="addSeed('img/red-quinoa.png')"/>
-		<input type="image" src="img/field-bean.png" onclick="addSeed('img/field-bean.png')"/>
-		<input type="image" src="img/mungbean.png" onclick="addSeed('img/mungbean.png')"/>
-		<input type="image" src="img/poppyseed.png" onclick="addSeed('img/poppyseed.png')"/>
-		<input type="image" src="img/barnyard-grass.png" onclick="addSeed('img/barnyard-grass.png')"/>
+	<p>Add yer seeds -
+		<input type="image" title="White Quinoa" alt= "white-quinoa" src="img/white-quinoa.png" onclick="addSeed('img/white-quinoa.png')"/>
+		<input type="image" title="Navy Bean" src="img/navy-bean.png" onclick="addSeed('img/navy-bean.png')"/>
+		<input type="image" title="Barley" src="img/barley.png" onclick="addSeed('img/barley.png')"/>
+		<input type="image" title="Millet" src="img/millet.png" onclick="addSeed('img/millet.png')"/>
+		<input type="image" title="Yellow Corn" src="img/corn.png" onclick="addSeed('img/corn.png')"/>
+		<input type="image" title="Lentil" src="img/lentil.png" onclick="addSeed('img/lentil.png')"/>
+		<input type="image" title="Red Quinoa" src="img/red-quinoa.png" onclick="addSeed('img/red-quinoa.png')"/>
+		<input type="image" title="Field Bean" src="img/field-bean.png" onclick="addSeed('img/field-bean.png')"/>
+		<input type="image" title="Mungbean" src="img/mungbean.png" onclick="addSeed('img/mungbean.png')"/>
+		<input type="image" title="Poppyseed" src="img/poppyseed.png" onclick="addSeed('img/poppyseed.png')"/>
+		<input type="image" title="Barnyard Grass" src="img/barnyard-grass.png" onclick="addSeed('img/barnyard-grass.png')"/>
 	</p>
 	<div id="canvas">
 	</div>
