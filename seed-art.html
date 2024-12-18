@@ -11,6 +11,15 @@
 		src: URL('assets/font/Alphagarden.ttf') format('truetype');
 	}
 
+	@font-face {
+		font-family: EBGaramond;
+		src: URL('assets/font/EBGaramond.ttf') format('truetype');
+	}
+
+	* {
+		font-family: courier;
+	}
+
 	h1 {
 		font-family: Alphagarden;
 		display: flex;
@@ -52,19 +61,18 @@
   </head>
   <body>
 	<h1>Seed Art Builder</h1>
-	<p>Add yer seeds -
-		<input type="image" title="White Quinoa" alt= "white-quinoa" src="img/white-quinoa.png" onclick="addSeed('img/white-quinoa.png')"/>
-		<input type="image" title="Navy Bean" src="img/navy-bean.png" onclick="addSeed('img/navy-bean.png')"/>
-		<input type="image" title="Barley" src="img/barley.png" onclick="addSeed('img/barley.png')"/>
-		<input type="image" title="Millet" src="img/millet.png" onclick="addSeed('img/millet.png')"/>
-		<input type="image" title="Yellow Corn" src="img/corn.png" onclick="addSeed('img/corn.png')"/>
-		<input type="image" title="Lentil" src="img/lentil.png" onclick="addSeed('img/lentil.png')"/>
-		<input type="image" title="Red Quinoa" src="img/red-quinoa.png" onclick="addSeed('img/red-quinoa.png')"/>
-		<input type="image" title="Field Bean" src="img/field-bean.png" onclick="addSeed('img/field-bean.png')"/>
-		<input type="image" title="Mungbean" src="img/mungbean.png" onclick="addSeed('img/mungbean.png')"/>
-		<input type="image" title="Poppyseed" src="img/poppyseed.png" onclick="addSeed('img/poppyseed.png')"/>
-		<input type="image" title="Barnyard Grass" src="img/barnyard-grass.png" onclick="addSeed('img/barnyard-grass.png')"/>
-	</p>
+	<p>Click on yer seeds to add them to the canvas -</p>
+	<input type="image" title="White Quinoa" alt= "white-quinoa" src="assets/img/white-quinoa.png" onclick="addSeed('assets/img/white-quinoa.png')"/>
+	<input type="image" title="Navy Bean" src="assets/img/navy-bean.png" onclick="addSeed('assets/img/navy-bean.png')"/>
+	<input type="image" title="Barley" src="assets/img/barley.png" onclick="addSeed('assets/img/barley.png')"/>
+	<input type="image" title="Millet" src="assets/img/millet.png" onclick="addSeed('assets/img/millet.png')"/>
+	<input type="image" title="Yellow Corn" src="assets/img/corn.png" onclick="addSeed('assets/img/corn.png')"/>
+	<input type="image" title="Lentil" src="assets/img/lentil.png" onclick="addSeed('assets/img/lentil.png')"/>
+	<input type="image" title="Red Quinoa" src="assets/img/red-quinoa.png" onclick="addSeed('assets/img/red-quinoa.png')"/>
+	<input type="image" title="Field Bean" src="assets/img/field-bean.png" onclick="addSeed('assets/img/field-bean.png')"/>
+	<input type="image" title="Mungbean" src="assets/img/mungbean.png" onclick="addSeed('assets/img/mungbean.png')"/>
+	<input type="image" title="Poppyseed" src="assets/img/poppyseed.png" onclick="addSeed('assets/img/poppyseed.png')"/>
+	<input type="image" title="Barnyard Grass" src="assets/img/barnyard-grass.png" onclick="addSeed('assets/img/barnyard-grass.png')"/>
 	<div id="canvas">
 	</div>
 	<footer>
