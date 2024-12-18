@@ -4,30 +4,84 @@
     <meta charset="utf-8" />
     <title>Canvas tutorial</title>
     <style>
-      canvas {
-        border: 1px solid black;
-      }
+	  div {
+		height: 200px;
+		width: 50%;
+		background-color: powderblue;
+	  }
+
+	  img {
+		object-fit: cover;
+		width: 20px;
+		height: 20px;
+	  }
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="1000" height="500"></canvas>
-    <script>
-			const ctx = document.getElementById("canvas").getContext("2d");
-			async function draw() {
-				// Wait for all images to be loaded:
-				await Promise.all(
-					Array.from(document.images).map(
-						(image) =>
-							new Promise((resolve) => image.addEventListener("load", resolve)),
-					),
-				);
+	<div id="canvas">
+	</div>
+	<script>
+		function dragStartHandler(event) {
+			event.dataTransfer.setData("image/png", event.target.id)
+			event.dataTransfer.effectAllowed = "move"
+		}
 
-				// call drawImage() as usual
-				const img = new Image();
-				img.src = "img/seed.svg";
-				ctx.drawImage(img, 0, 0);
-			}
-			draw();
+		function onDrop(event) {
+			const data = event.dataTransfer.getData("image/png");
+			event.target.textContent = data;
+			event.preventDefault();
+		}
+
+		// make canvas draggable target
+		const canvas = document.getElementById("canvas");
+
+		canvas.addEventListener("dragenter", (event) => {
+			event.preventDefault();
+		});
+
+		canvas.addEventListener("dragover", (event) => {
+			event.preventDefault();
+		});
+
+		// Create navy bean button
+		let btn = document.createElement("button"); 
+		btn.innerHTML = 'Navy Bean';
+		btn.addEventListener('click',function(){
+			img = document.createElement("img")
+			img.id = "p1"
+			img.src = "img/navy-bean.png"
+			img.draggable = true
+			img.onDragStart = "dragStartHandler(event)"
+			document.getElementById('canvas').appendChild(img);
+			addDraggableImage(img)
+		});
+		document.getElementById('canvas').appendChild(btn);
+
+		// create draggable stuff
+		function addDraggableImage(img) {
+			const canvas = document.getElementById("canvas");
+
+			let dragged = null;
+
+			const draggableImg = document.getElementById(img.id);
+			draggableImg.addEventListener("dragstart", (event) => {
+				dragged = event.target;
+			});
+
+			canvas.addEventListener("dragover", (event) => {
+				event.preventDefault();
+			});
+
+			canvas.addEventListener("drop", (event) => {
+				console.log(event)
+				event.preventDefault();
+				dragged.parentNode.removeChild(dragged);
+				dragged.style.position = 'absolute'
+				dragged.style.left = `${event.clientX}px`
+				dragged.style.top = `${event.clientY}px`
+				event.target.appendChild(dragged);
+			});
+		}
     </script>
   </body>
 </html>
