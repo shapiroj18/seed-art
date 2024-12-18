@@ -3,26 +3,72 @@
   <head>
     <meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="img/barley.png"/>
-    <title>Crop Art</title>
+    <title>Crop Art Builder</title>
     <style>
-	  div {
+
+	@font-face {
+		font-family: Alphagarden;
+		src: URL('assets/font/Alphagarden.ttf') format('truetype');
+	}
+
+	h1 {
+		font-family: Alphagarden;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		font-size: xxx-large;
+	}
+
+	div {
 		height: 500px;
 		width: 100%;
 		border-style: solid;
 		border-width: 1px;
-	  }
+		border-radius: 15px;
+	}
 
-	  img, input {
+	img, input {
 		object-fit: cover;
-		width: 20px;
-		height: 20px;
-	  }
+		width: 30px;
+		height: 30px;
+	}
+
+	footer {
+		flex-direction: column;
+		justify-content: right;
+		text-align: right;
+	}
+
+	ul {
+		list-style-type: none;
+	}
     </style>
   </head>
   <body>
-	<input type="image" src="img/navy-bean.png" onclick="addSeed('img/navy-bean.png')"/>
+	<h1>Crop Art Builder</h1>
+	<p>Add your seeds:
+		<input type="image" src="img/white-quinoa.png" onclick="addSeed('img/white-quinoa.png')"/>
+		<input type="image" src="img/navy-bean.png" onclick="addSeed('img/navy-bean.png')"/>
+		<input type="image" src="img/barley.png" onclick="addSeed('img/barley.png')"/>
+		<input type="image" src="img/millet.png" onclick="addSeed('img/millet.png')"/>
+		<input type="image" src="img/corn.png" onclick="addSeed('img/corn.png')"/>
+		<input type="image" src="img/lentil.png" onclick="addSeed('img/lentil.png')"/>
+		<input type="image" src="img/red-quinoa.png" onclick="addSeed('img/red-quinoa.png')"/>
+		<input type="image" src="img/field-bean.png" onclick="addSeed('img/field-bean.png')"/>
+		<input type="image" src="img/mungbean.png" onclick="addSeed('img/mungbean.png')"/>
+		<input type="image" src="img/poppyseed.png" onclick="addSeed('img/poppyseed.png')"/>
+		<input type="image" src="img/barnyard-grass.png" onclick="addSeed('img/barnyard-grass.png')"/>
+	</p>
 	<div id="canvas">
 	</div>
+	<footer>
+		<h3>Crop Art Resources</h3>
+		<ul>
+			<li>Crop Art: <a href="https://www.cropart.com/" target="_blank">https://www.cropart.com/</a></li>
+			<li>Seed ID Guide: <a href="https://seedidguide.idseed.org/gallery/" target="_blank">https://seedidguide.idseed.org/gallery/</a></li>
+		</ul>
+	  </footer>
 	<script>
 		function addSeed(imgSrc) {
 			let img = document.createElement("img")
@@ -51,8 +97,9 @@
 				event.preventDefault();
 				dragged.parentNode.removeChild(dragged);
 				dragged.style.position = 'absolute'
-				dragged.style.left = `${event.clientX}px`
-				dragged.style.top = `${event.clientY}px`
+				console.log(event)
+				dragged.style.left = `${event.x}px`
+				dragged.style.top = `${event.y}px`
 				event.target.appendChild(dragged);
 			});
 		}
