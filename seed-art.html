@@ -57,7 +57,12 @@
   </head>
   <body>
 	<h1>Seed Art Builder</h1>
-	<p>Click on yer seeds to add them to the canvas -</p>
+	<h2>Instructions</h2>
+	<ol>
+		<li>Click on yer seed to add it to the canvas</li>
+		<li>Drag to move it</li>
+		<li>Use left/right arrows after selecting to rotate</li>
+	</ol>
 	<input type="image" title="White Quinoa" alt= "white-quinoa" src="assets/img/white-quinoa.png" onclick="addSeed('assets/img/white-quinoa.png')"/>
 	<input type="image" title="Navy Bean" src="assets/img/navy-bean.png" onclick="addSeed('assets/img/navy-bean.png')"/>
 	<input type="image" title="Barley" src="assets/img/barley.png" onclick="addSeed('assets/img/barley.png')"/>
@@ -79,11 +84,85 @@
 		</ul>
 	  </footer>
 	<script>
+
+		let selectedImage = null;
+		document.body.addEventListener('click', function(event) {
+			const { nodeName } = event.target;
+			if (nodeName === 'IMG') {
+				selectedImage = event.target
+			}
+		});
+
+		document.addEventListener('keydown', function(event) {
+		if (event.key === 'ArrowRight' && selectedImage) {
+			console.log(selectedImage.style.transorm)
+			switch (selectedImage.style.transform) {
+				case "rotate(0deg)":
+					selectedImage.style.transform = "rotate(45deg)";
+					break;
+				case "rotate(45deg)":
+					selectedImage.style.transform = "rotate(90deg)";
+					break;
+				case "rotate(90deg)":
+					selectedImage.style.transform = "rotate(135deg)";
+					break;
+				case "rotate(135deg)":
+					selectedImage.style.transform = "rotate(180deg)";
+					break;
+				case "rotate(180deg)":
+					selectedImage.style.transform = "rotate(225deg)";
+					break;
+				case "rotate(225deg)":
+					selectedImage.style.transform = "rotate(270deg)";
+					break;
+				case "rotate(270deg)":
+					selectedImage.style.transform = "rotate(315deg)";
+					break;
+				case "rotate(315deg)":
+					selectedImage.style.transform = "rotate(0deg)";
+					break;
+			}
+		}
+		});
+
+		document.addEventListener('keydown', function(event) {
+		if (event.key === 'ArrowLeft' && selectedImage) {
+			console.log(selectedImage.style.transorm)
+			switch (selectedImage.style.transform) {
+				case "rotate(0deg)":
+					selectedImage.style.transform = "rotate(315deg)";
+					break;
+				case "rotate(315deg)":
+					selectedImage.style.transform = "rotate(270deg)";
+					break;
+				case "rotate(270deg)":
+					selectedImage.style.transform = "rotate(225deg)";
+					break;
+				case "rotate(225deg)":
+					selectedImage.style.transform = "rotate(180deg)";
+					break;
+				case "rotate(180deg)":
+					selectedImage.style.transform = "rotate(135deg)";
+					break;
+				case "rotate(135deg)":
+					selectedImage.style.transform = "rotate(90deg)";
+					break;
+				case "rotate(90deg)":
+					selectedImage.style.transform = "rotate(45deg)";
+					break;
+				case "rotate(45deg)":
+					selectedImage.style.transform = "rotate(0deg)";
+					break;
+			}
+		}
+		});
+
 		function addSeed(imgSrc) {
 			let img = document.createElement("img")
 			img.id = crypto.randomUUID()
 			img.src = imgSrc
 			img.draggable = true
+			img.style.transform = "rotate(0deg)"
 			img.onDragStart = "dragStartHandler(event)"
 			document.getElementById('canvas').appendChild(img);
 			makeImageDraggable(img)
@@ -113,6 +192,7 @@
 				dragged.style.top = `${event.clientY - 15 + window.scrollY}px`
 				dragged.style.left = `${event.clientX - 15 + window.scrollX}px`
 				event.target.appendChild(dragged);
+				selectedImage = dragged
 			});
 		}
 
