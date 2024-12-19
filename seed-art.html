@@ -105,9 +105,12 @@
 				event.preventDefault();
 				dragged.parentNode.removeChild(dragged);
 				dragged.style.position = 'absolute'
-				console.log(event)
-				dragged.style.left = `${event.x}px`
-				dragged.style.top = `${event.y}px`
+
+				// event tells where mouse is when dropping
+				// 15 represents half the number of pixels of image's width and height (centers image)
+				// window scroll represents how the user has scrolled
+				dragged.style.top = `${event.clientY - 15 + window.scrollY}px`
+				dragged.style.left = `${event.clientX - 15 + window.scrollX}px`
 				event.target.appendChild(dragged);
 			});
 		}
